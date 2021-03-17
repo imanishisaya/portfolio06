@@ -1,0 +1,524 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;  
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+
+#nav-open {
+  display: inline-block;
+  width: 30px;
+  height: 22px;
+  vertical-align: middle;
+}
+
+@charset "UTF-8";
+
+*,*::before, *::after {
+  box-sizing: boder-box;
+}
+
+body {
+  margin: 0;
+  font-family:sans-serif;
+  font-size: 16px;
+  color: #2b2b2b;
+}
+
+h1,h2,h3,p {
+  margin: 0;
+  padding: 0;
+  font-family: 'Work Sans', sans-serif;
+}
+
+a {
+  color: #2b2b2b;
+  text-decoration: none;
+}
+
+section {
+  text-align: center;
+}
+
+.contents-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/*header*/
+
+.header {
+  position: relative;
+  width: 100%;
+  height: 620px;
+  background:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('img/header.png');
+  background-size: cover;
+  text-align: center;
+  color: #fff;
+}
+
+.header-nav {
+  position: absolute;
+  position: fixed;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 64px;
+}
+
+.header_nav_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-nav-logo {
+  font-size: 36px;
+}
+
+/*ハンバーガーメニュー実装*/
+
+
+.menu-btn {
+  display: flex;
+  top: 10px;
+  right: 10px;
+  height: 60px;
+  width: 60px;
+  justify-content: center;
+  align-items: center;
+  z-index: 90;
+  padding: 10px 10px;
+  cursor: pointer;
+}
+
+.menu-btn span,
+.menu-btn span:before,
+.menu-btn span:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    position: absolute;
+    z-index: 90;
+}
+
+.menu-btn span:before {
+  bottom: 8px;
+}
+
+.menu-btn span:after {
+  top: 8px;
+}
+
+#menu-btn-check:checked ~ .menu-btn span {
+  background-color: rgba(255,255,255,0);
+}
+
+#menu-btn-check:checked ~ .menu-btn span::before {
+  bottom: 0;
+  transform: rotate(45deg);
+}
+
+#menu-btn-check:checked ~ .menu-btn span::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+#menu-btn-check {
+  display: none;
+}
+
+#menu-btn-check:checked ~ .menu-content {
+  top: 0;
+}
+
+/*メニュー内容*/
+
+.menu-content {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: -100%;
+  left: 0;
+  z-index: 80;
+  background-color: #fff;
+  opacity: 0.9;
+  transition: 1s;
+}
+
+.menu-content ul {
+  padding: 70px 10px 0;
+}
+
+.menu-content ul li {
+  border-bottom: solid 1px #2b2b2b;
+  list-style: none;
+}
+
+.menu-content ul li a {
+  display: block;
+  width: 100%;
+  font-size: 15px;
+  box-sizing: border-box;
+  color: #2b2b2b;
+  text-decoration: none;
+  padding: 9px 15px 10px 0;
+  position: relative;
+  padding: 30px 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.menu-content ul li a::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-top: solid 2px #2b2b2b;
+  border-right: solid 2px #2b2b2b;
+  transform: rotate(45deg);
+  position: absolute;
+  right: 11px;
+  top: 36px;
+}
+
+.header-title {
+  padding-top: 240px;
+  font-size: 120px;
+  font-weight: normal;
+}
+
+.header-title-sub {
+  word-spacing: 4px;
+}
+
+.header-title-sub::before,
+.header-title-sub::after {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 2px;
+  margin: 0 8px;
+  background: #fff;
+  vertical-align: middle;
+} 
+
+/* Consept */
+
+.heading {
+  position: relative;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  font-size: 36px;
+  letter-spacing: 2px;
+}
+
+.heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 40px;
+  height: 1px;
+  background: #2b2b2b;
+  transform: translateX(-50%);
+}
+
+
+.text {
+  padding-bottom: 40px;
+  line-height: 1.8;
+  letter-spacing: 1.4px;
+}
+
+.concept {
+  width: 100%;
+  padding: 80px 0;
+  background: linear-gradient(#fff 70%, #ededed 30);
+}
+
+.concept-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+/* Work */
+
+.Work-contents {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-between;
+  height: 1680px;
+}
+
+.contents-work {
+  width: 420px;
+  text-align: left;
+  padding-bottom: 80px;
+  line-height: 1.8;
+}
+.contents-work:nth-of-type(1) {
+  order: 1;
+}
+.contents-work:nth-of-type(2) {
+  order: 3;
+  margin-top: 120px;
+}
+
+.contents-work:nth-of-type(3) {
+  order: 2;
+}
+.contents-work:nth-of-type(4) {
+  order: 4;
+}
+
+.contents-heading {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 40px 0 22px 0;
+}
+
+.contents-text {
+  line-height: 1.3;
+  letter-spacing: 0.3em;
+}
+
+/*florist*/
+
+.florist {
+  background: linear-gradient(#ededed 60%,#fff 40%);
+  padding-top: 80px;
+  padding-bottom: 100px;
+}
+
+.florist-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.florist-contents {
+  width: 300px;
+  text-align: left;
+}
+
+.florist-contents img {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.florist-heading {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 15px 0;
+}
+
+.florist-text {
+  line-height: 1.3;
+  letter-spacing: 0.1em;
+}
+
+/*Shop information*/
+
+.shop-infomation{
+  width: 100%;
+  padding: 80px 0 120px;
+}
+
+.address-wrapper img {
+  width: 50%;
+}
+
+.address-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.address {
+  width: 45%;
+}
+
+tbody {
+  vertical-align: inherit;
+}
+
+.infomation-table-heading {
+  width: 25%;
+  border-right: 1px solid #a0a0a0;
+  border-collapse: separate;
+}
+
+th,td {
+  font-weight: normal;
+}
+
+td {
+  display: table-cell;
+  vertical-align: inherit;
+  padding:0 0 20px 15px;
+}
+
+th {
+  display: table-cell;
+  vertical-align: inherit;
+  text-align: -internal-center;
+}
+
+.infomation-table {
+ border-spacing: 20px;
+ text-align: left;
+ letter-spacing: 1.5px;
+ line-height: 2;
+}
+
+/*contact*/
+
+.contact {
+  width: 100%;
+  height: 450px;
+  background: linear-gradient(rgba(255,255,255,0.6),rgba(255,255,255,0.6)),url('img/contact_us.png');
+  background-size: cover;
+}
+
+.contact-text {
+  position:  relative;
+  top: 100;
+}
+
+
+.form-btn {
+  position: relative;
+  display: inline-block;
+  top: 100;
+  padding-left: 30px;
+  width: 330px;
+  height: 80px;
+  line-height: 80px;
+  font-size: 20px;
+  background: #fff;
+  border: #a0a0a0 1px solid;
+}
+
+.form-btn::before,
+.form-btn::after {
+  content: '';
+  position: absolute;
+  border-radius: 2px;
+}
+
+.form-btn::before {
+  top: 30px;
+  left: 85px;
+  width: 30px;
+  height: 20px;
+  border: 1px solid #2b2b2b;
+}
+
+.form-btn::after {
+  top: 21px;
+  left: 90px;
+  width: 20px;
+  height: 20px;
+  border-right: 1px solid #2b2b2b;
+  border-bottom: 1px solid #2b2b2b;
+  transform: rotate(45deg);
+}
+
+/*footer*/
+footer {
+  padding-top: 10px;
+  text-align: center;
+}
