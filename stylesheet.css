@@ -545,13 +545,21 @@ footer {
   overflow: hidden;
 }
 
+.header-wrapper {
+  position: relative;
+  top: 220;
+}
+
 .header-title {
   font-size: 4rem;
+  padding: 0;
+  
 }
 
 .header-nav-logo {
   padding-left: 20px;
-}
+  }
+
 
 #concept {
   width:100%;
@@ -563,22 +571,26 @@ footer {
 }
 
 .Work-contents {
-  width: 100%;
+  max-width: 700px;
   flex-direction: column;
   height: auto;
 }
 
 .contents-work {
   padding-bottom: 40px;
+  text-align: center;
 }
 
 .contents-heading {
   text-align: center;
+  
 }
 
 .contents-text {
   width: 90%;
   margin: 0 auto;
+  text-align: center;
+  word-wrap:break-all;
 }
 
 .contents-work:nth-of-type(2) {
